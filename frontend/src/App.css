@@ -1,0 +1,19 @@
+.pointer {
+  cursor: pointer;
+}
+
+/* Pink theme */
+.btn-pink {
+  background-color: #e75480;
+  color: white;
+  border: none;
+}
+.btn-pink:hover {
+  background-color: #d94370;
+  color: white;
+}
+
+.text-pink {
+  color: #e75480 !important;
+  cursor: pointer;
+}
