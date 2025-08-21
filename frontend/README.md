@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+# 🎮 Pokemon Search (MERN Assignment)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a **MERN stack application** to manage Pokemons (Masters) and their Abilities.  
+Frontend is built with **React + Bootstrap** and Backend with **Node.js + Express + MongoDB**.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 How to Run
 
-### `npm start`
+### 1. Clone the repository
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+git clone https://github.com/chavdajay/PokemonSearch.git
+cd PokemonSearch
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+### 2. Backend Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+cd backend
+npm install
+```
 
-### `npm run build`
+👉 Create a `.env` file inside the **backend** folder:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```env
+PORT=5000
+MONGO_URI=mongodb://127.0.0.1:27017/pokemonDB
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Run backend:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm start
+```
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3. Frontend Setup
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+cd frontend
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+👉 Create a `.env` file inside the **frontend** folder:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```env
+REACT_APP_API_BASE_URL=http://localhost:5000/api
+```
 
-## Learn More
+Run frontend:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 📌 API Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 🔹 Masters (Pokemons)
 
-### Analyzing the Bundle Size
+| Method     | Endpoint             | Description          |
+| ---------- | -------------------- | -------------------- |
+| **POST**   | `/api/masters`       | Create a new Pokemon |
+| **GET**    | `/api/masters`       | Get all Pokemons     |
+| **GET**    | `/api/masters/:name` | Get Pokemon by Name  |
+| **DELETE** | `/api/masters/:id`   | Delete Pokemon by ID |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+### 🔹 Abilities
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+| Method     | Endpoint                          | Description                         |
+| ---------- | --------------------------------- | ----------------------------------- |
+| **POST**   | `/api/abilities`                  | Create a new Ability                |
+| **GET**    | `/api/abilities`                  | Get all Abilities                   |
+| **GET**    | `/api/abilities/master/:masterId` | Get abilities of a specific Pokemon |
+| **PUT**    | `/api/abilities/:id`              | Update ability by ID                |
+| **DELETE** | `/api/abilities/:id`              | Delete ability by ID                |
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## ⚡ Example Requests
 
-### Deployment
+### Create Master
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```json
+POST /api/masters
+{
+  "name": "Pikachu",
+  "number": "25",
+  "image": "https://img.pokemondb.net/artwork/pikachu.jpg"
+}
+```
 
-### `npm run build` fails to minify
+### Create Ability
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```json
+POST /api/abilities
+{
+  "ability": "Thunderbolt",
+  "type": "Electric",
+  "damage": 90,
+  "status": "active",
+  "masterId": "PASTE_MASTER_ID_HERE"
+}
+```
+
+---
+
+✅ Now both frontend & backend will run with proper environment setup.
